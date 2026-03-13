@@ -280,7 +280,7 @@ Este proyecto sigue [Conventional Commits](https://www.conventionalcommits.org/)
 
 ## 📄 Licencia
 
-Este proyecto es **privado** y propiedad de **Dharsain Inmobiliaria**. Todos los derechos reservados.
+Este proyecto es **privado** y propiedad de **SFO Estudio Web**. Todos los derechos reservados.
 
 ---
 
