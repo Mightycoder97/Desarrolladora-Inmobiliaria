@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    title: 'Compra y Venta de Inmuebles',
+    description: 'Te asesoramos en todo el proceso de compra o venta de tu propiedad, desde la evaluación hasta el cierre legal.',
+    features: ['Evaluación de mercado', 'Negociación profesional', 'Documentación legal', 'Acompañamiento completo'],
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
+    title: 'Administración de Propiedades',
+    description: 'Gestionamos tus propiedades para maximizar tu rendimiento y mantener su valor.',
+    features: ['Gestión de alquileres', 'Mantenimiento preventivo', 'Reportes financieros', 'Cobro de rentas'],
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
+    title: 'Asesoría Legal Inmobiliaria',
+    description: 'Revisión de documentos, verificación de títulos y asesoría en contratos inmobiliarios.',
+    features: ['Revisión de títulos', 'Contratos de compraventa', 'Due diligence', 'Trámites registrales'],
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>',
+    title: 'Valuación de Inmuebles',
+    description: 'Determinamos el valor real de tu propiedad utilizando métodos profesionales y datos del mercado actual.',
+    features: ['Tasación certificada', 'Análisis comparativo', 'Informe detallado', 'Valor de mercado actualizado'],
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+    title: 'Marketing Inmobiliario',
+    description: 'Estrategias de comercialización efectivas para vender o alquilar tu propiedad rápidamente.',
+    features: ['Fotografía profesional', 'Tours virtuales', 'Publicación en portales', 'Campañas digitales'],
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    title: 'Asesoría Financiera',
+    description: 'Te orientamos sobre las mejores opciones de financiamiento para tu inversión inmobiliaria.',
+    features: ['Créditos hipotecarios', 'MiVivienda', 'Techo Propio', 'Financiamiento directo'],
+  },
+];
+---
+
+<Layout
+  title="Servicios Inmobiliarios — Dharsain Inmobiliaria"
+  description="Servicios integrales de asesoría inmobiliaria en Lima: compra, venta, administración, valuación y asesoría legal."
+>
+  <section class="page-hero">
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__content">
+      <span class="hero__badge">Nuestros Servicios</span>
+      <h1>Servicios Inmobiliarios</h1>
+      <p>Soluciones integrales para todas tus necesidades en el sector inmobiliario.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-grid">
+        {services.map(service => (
+          <div class="service-card-full">
+            <div class="service-card-full__icon">
+              <Fragment set:html={service.icon} />
+            </div>
+            <div class="service-card-full__content">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <ul class="service-features">
+                {service.features.map(feat => (
+                  <li>{feat}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-content">
+      <h2>¿Necesitas asesoría personalizada?</h2>
+      <p>Nuestro equipo de expertos está listo para ayudarte. Contáctanos hoy mismo.</p>
+      <a href="/#contacto" class="btn btn-primary">Solicitar Asesoría</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: calc(var(--header-height) + 60px) 0 80px;
+    background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=600&fit=crop');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15,26,46,0.92), rgba(26,39,68,0.88));
+  }
+
+  .page-hero__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-hero h1 { color: #fff; margin-bottom: var(--space-md); }
+  .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+  .hero__badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(200, 150, 78, 0.2);
+    border: 1px solid rgba(200, 150, 78, 0.4);
+    border-radius: var(--radius-full);
+    color: var(--color-accent-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .service-card-full {
+    display: flex;
+    gap: var(--space-xl);
+    padding: var(--space-2xl);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-base);
+  }
+
+  .service-card-full:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
+
+  .service-card-full__icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(200, 150, 78, 0.1);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    flex-shrink: 0;
+    transition: all var(--transition-base);
+  }
+
+  .service-card-full:hover .service-card-full__icon {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .service-card-full__content h3 {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-card-full__content p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .service-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: var(--space-sm);
+  }
+
+  .service-features li {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .service-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    padding: var(--space-4xl) 0;
+    text-align: center;
+  }
+
+  .cta-content h2 { color: #fff; margin-bottom: var(--space-md); }
+  .cta-content p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: var(--space-xl); }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .service-card-full {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .service-features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

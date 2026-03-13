@@ -1,0 +1,306 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const terrenos = [
+  {
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop',
+    title: 'Terreno en Cañete',
+    location: 'Cañete, Lima',
+    area: '120 m²',
+    price: 'S/ 48,000',
+    type: 'Residencial',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1628624747186-a941c476b7ef?w=600&h=400&fit=crop',
+    title: 'Terreno en Lurín',
+    location: 'Lurín, Lima',
+    area: '200 m²',
+    price: 'S/ 95,000',
+    type: 'Residencial',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1595880500386-4b868e83bb9d?w=600&h=400&fit=crop',
+    title: 'Terreno en Chosica',
+    location: 'Chosica, Lima',
+    area: '150 m²',
+    price: 'S/ 62,000',
+    type: 'Residencial',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1440581572325-0bea30075d9d?w=600&h=400&fit=crop',
+    title: 'Terreno en Pachacámac',
+    location: 'Pachacámac, Lima',
+    area: '300 m²',
+    price: 'S/ 135,000',
+    type: 'Comercial',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&h=400&fit=crop',
+    title: 'Terreno en Huachipa',
+    location: 'Huachipa, Lima',
+    area: '180 m²',
+    price: 'S/ 78,000',
+    type: 'Residencial',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
+    title: 'Terreno en Cieneguilla',
+    location: 'Cieneguilla, Lima',
+    area: '250 m²',
+    price: 'S/ 110,000',
+    type: 'Campestre',
+  },
+];
+---
+
+<Layout
+  title="Búsqueda de Terrenos en Lima — Dharsain Inmobiliaria"
+  description="Encuentra terrenos disponibles en Lima. Terrenos residenciales, comerciales y campestres con precios accesibles y financiamiento directo."
+>
+  <section class="page-hero">
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__content">
+      <span class="hero__badge">Catálogo de Terrenos</span>
+      <h1>Búsqueda de Terrenos</h1>
+      <p>Encuentra el terreno perfecto para tu proyecto. Opciones en las mejores zonas de crecimiento de Lima.</p>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="filters-bar">
+    <div class="container filters-inner">
+      <div class="filter-group">
+        <label for="filter-location">Ubicación</label>
+        <select id="filter-location" class="form-control">
+          <option value="">Todas</option>
+          <option>Cañete</option>
+          <option>Lurín</option>
+          <option>Chosica</option>
+          <option>Pachacámac</option>
+          <option>Huachipa</option>
+          <option>Cieneguilla</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-type">Tipo</label>
+        <select id="filter-type" class="form-control">
+          <option value="">Todos</option>
+          <option>Residencial</option>
+          <option>Comercial</option>
+          <option>Campestre</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-price">Precio máximo</label>
+        <select id="filter-price" class="form-control">
+          <option value="">Sin límite</option>
+          <option>S/ 50,000</option>
+          <option>S/ 80,000</option>
+          <option>S/ 100,000</option>
+          <option>S/ 150,000</option>
+        </select>
+      </div>
+      <button class="btn btn-primary btn-sm" id="filter-btn">Buscar</button>
+    </div>
+  </section>
+
+  <!-- TERRENOS GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="terrenos-grid">
+        {terrenos.map(terreno => (
+          <div class="terreno-card card">
+            <div class="terreno-card__image">
+              <img src={terreno.img} alt={terreno.title} loading="lazy" />
+              <span class="terreno-card__type">{terreno.type}</span>
+            </div>
+            <div class="terreno-card__body">
+              <h3>{terreno.title}</h3>
+              <div class="terreno-card__meta">
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  {terreno.location}
+                </span>
+                <span class="meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                  {terreno.area}
+                </span>
+              </div>
+              <div class="terreno-card__footer">
+                <span class="terreno-price">{terreno.price}</span>
+                <a href="/#contacto" class="btn btn-primary btn-sm">Consultar</a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-content">
+      <h2>¿No encuentras lo que buscas?</h2>
+      <p>Cuéntanos qué tipo de terreno necesitas y te ayudamos a encontrarlo.</p>
+      <a href="/#contacto" class="btn btn-primary">Solicitar Búsqueda Personalizada</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: calc(var(--header-height) + 60px) 0 80px;
+    background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=600&fit=crop');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15,26,46,0.92), rgba(26,39,68,0.88));
+  }
+
+  .page-hero__content { position: relative; z-index: 2; }
+  .page-hero h1 { color: #fff; margin-bottom: var(--space-md); }
+  .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+  .hero__badge {
+    display: inline-block; padding: 8px 20px;
+    background: rgba(200, 150, 78, 0.2); border: 1px solid rgba(200, 150, 78, 0.4);
+    border-radius: var(--radius-full); color: var(--color-accent-light);
+    font-size: 0.85rem; font-weight: 600; margin-bottom: var(--space-lg);
+  }
+
+  .filters-bar {
+    background: var(--color-surface);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: var(--header-height);
+    z-index: 50;
+  }
+
+  .filters-inner {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .filter-group {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .filter-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .filter-group .form-control {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  .terrenos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .terreno-card__image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .terreno-card__image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .terreno-card:hover .terreno-card__image img {
+    transform: scale(1.05);
+  }
+
+  .terreno-card__type {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .terreno-card__body {
+    padding: var(--space-lg);
+  }
+
+  .terreno-card__body h3 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+
+  .terreno-card__meta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  .meta-item svg {
+    color: var(--color-accent);
+  }
+
+  .terreno-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .terreno-price {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    padding: var(--space-4xl) 0;
+    text-align: center;
+  }
+  .cta-content h2 { color: #fff; margin-bottom: var(--space-md); }
+  .cta-content p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: var(--space-xl); }
+
+  @media (max-width: 960px) {
+    .terrenos-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .terrenos-grid { grid-template-columns: 1fr; }
+    .filters-inner { flex-direction: column; }
+    .filter-group { width: 100%; }
+  }
+</style>

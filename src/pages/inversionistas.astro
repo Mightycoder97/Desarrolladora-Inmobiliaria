@@ -1,0 +1,268 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const benefits = [
+  { icon: '📈', title: 'Alta Rentabilidad', desc: 'Retorno de inversión de hasta 15% anual en proyectos seleccionados.' },
+  { icon: '🔒', title: 'Seguridad Jurídica', desc: 'Documentación completa y saneada. Sin riesgos legales.' },
+  { icon: '💎', title: 'Plusvalía Garantizada', desc: 'Zonas con alto potencial de crecimiento y valorización constante.' },
+  { icon: '🤝', title: 'Acompañamiento Total', desc: 'Asesoría personalizada desde la inversión hasta la rentabilización.' },
+];
+
+const plans = [
+  {
+    name: 'Inversor Básico',
+    minInvestment: 'S/ 50,000',
+    roi: '8-10%',
+    features: ['1 lote individual', 'Documentación incluida', 'Soporte por email', 'Reportes trimestrales'],
+  },
+  {
+    name: 'Inversor Premium',
+    minInvestment: 'S/ 150,000',
+    roi: '12-15%',
+    features: ['Paquete de 2-3 lotes', 'Precio preferencial', 'Asesor dedicado', 'Reportes mensuales', 'Acceso a pre-ventas'],
+    featured: true,
+  },
+  {
+    name: 'Inversor Corporativo',
+    minInvestment: 'S/ 500,000+',
+    roi: '15-20%',
+    features: ['Manzanas completas', 'Máximo descuento', 'Equipo dedicado', 'Reportes semanales', 'Co-desarrollo disponible', 'Participación en utilidades'],
+  },
+];
+---
+
+<Layout
+  title="Oportunidades de Inversión Inmobiliaria — Dharsain Inmobiliaria"
+  description="Invierte en proyectos inmobiliarios de alta rentabilidad en Lima. ROI desde 8% anual. Asesoría de inversión personalizada."
+>
+  <section class="page-hero">
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__content">
+      <span class="hero__badge">Oportunidades de Inversión</span>
+      <h1>Haz crecer tu capital</h1>
+      <p>Invierte en proyectos inmobiliarios con alta rentabilidad y respaldo profesional completo.</p>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">¿Por qué invertir con nosotros?</span>
+        <h2>Ventajas para el inversionista</h2>
+      </div>
+      <div class="benefits-grid">
+        {benefits.map(b => (
+          <div class="benefit-card">
+            <span class="benefit-icon">{b.icon}</span>
+            <h3>{b.title}</h3>
+            <p>{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI VISUAL -->
+  <section class="section roi-section" style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="roi-grid">
+        <div class="roi-content">
+          <span class="section-tag">Rendimiento</span>
+          <h2>Tu inversión crece año tras año</h2>
+          <p>
+            El mercado inmobiliario en Lima ha demostrado ser una de las inversiones
+            más seguras y rentables. La plusvalía promedio en zonas de expansión
+            supera el 10% anual.
+          </p>
+          <div class="roi-stats">
+            <div class="roi-stat">
+              <span class="roi-stat__number">+15%</span>
+              <span class="roi-stat__label">Plusvalía anual promedio</span>
+            </div>
+            <div class="roi-stat">
+              <span class="roi-stat__number">2-3 años</span>
+              <span class="roi-stat__label">Retorno de inversión</span>
+            </div>
+            <div class="roi-stat">
+              <span class="roi-stat__number">100%</span>
+              <span class="roi-stat__label">Seguridad documental</span>
+            </div>
+          </div>
+        </div>
+        <div class="roi-image">
+          <img
+            src="https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=600&h=500&fit=crop"
+            alt="Desarrollo urbano en crecimiento"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTMENT PLANS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Planes de Inversión</span>
+        <h2>Elige tu perfil de inversión</h2>
+        <p>Opciones adaptadas a todo tipo de inversionista.</p>
+      </div>
+      <div class="plans-grid">
+        {plans.map(plan => (
+          <div class:list={['plan-card', { 'plan-card--featured': plan.featured }]}>
+            {plan.featured && <div class="plan-badge">Recomendado</div>}
+            <h3>{plan.name}</h3>
+            <div class="plan-investment">
+              <span class="plan-label">Inversión mínima</span>
+              <span class="plan-amount">{plan.minInvestment}</span>
+            </div>
+            <div class="plan-roi">
+              <span class="plan-label">ROI estimado</span>
+              <span class="plan-roi-value">{plan.roi} anual</span>
+            </div>
+            <ul class="plan-features">
+              {plan.features.map(f => (
+                <li>{f}</li>
+              ))}
+            </ul>
+            <a href="/#contacto" class:list={['btn', plan.featured ? 'btn-primary' : 'btn-outline']} style="width:100%;">
+              Solicitar Información
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTOR FORM -->
+  <section class="section investor-form-section" style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="investor-form-grid">
+        <div class="investor-form-info">
+          <span class="section-tag">Para Inversionistas</span>
+          <h2>Formulario exclusivo</h2>
+          <p>Completa este formulario y un asesor especializado en inversiones te contactará con oportunidades exclusivas.</p>
+        </div>
+        <div class="investor-form-wrapper">
+          <form class="contact-form" id="investor-form">
+            <div class="form-group">
+              <label for="inv-name">Nombre completo</label>
+              <input type="text" id="inv-name" class="form-control" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="inv-email">Email corporativo</label>
+              <input type="email" id="inv-email" class="form-control" placeholder="tu@empresa.com" required />
+            </div>
+            <div class="form-group">
+              <label for="inv-phone">Teléfono</label>
+              <input type="tel" id="inv-phone" class="form-control" placeholder="+51 999 999 999" required />
+            </div>
+            <div class="form-group">
+              <label for="inv-budget">Presupuesto de inversión</label>
+              <select id="inv-budget" class="form-control" required>
+                <option value="">Seleccionar rango</option>
+                <option>S/ 50,000 - S/ 100,000</option>
+                <option>S/ 100,000 - S/ 300,000</option>
+                <option>S/ 300,000 - S/ 500,000</option>
+                <option>S/ 500,000+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inv-message">Comentarios adicionales</label>
+              <textarea id="inv-message" class="form-control" rows="3" placeholder="Cuéntanos sobre tu experiencia inversora..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;" id="inv-submit">
+              Enviar Solicitud de Inversión
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: calc(var(--header-height) + 60px) 0 80px;
+    background-image: url('https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1600&h=600&fit=crop');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+  .page-hero__overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,26,46,0.92), rgba(26,39,68,0.88)); }
+  .page-hero__content { position: relative; z-index: 2; }
+  .page-hero h1 { color: #fff; margin-bottom: var(--space-md); }
+  .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+  .hero__badge { display: inline-block; padding: 8px 20px; background: rgba(200,150,78,0.2); border: 1px solid rgba(200,150,78,0.4); border-radius: var(--radius-full); color: var(--color-accent-light); font-size: 0.85rem; font-weight: 600; margin-bottom: var(--space-lg); }
+  .section-tag { display: inline-block; padding: 6px 16px; background: rgba(200,150,78,0.12); color: var(--color-accent-dark); border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: var(--space-md); }
+
+  .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
+  .benefit-card { text-align: center; padding: var(--space-2xl); background: var(--color-surface); border-radius: var(--radius-md); border: 1px solid var(--color-border); transition: all var(--transition-base); }
+  .benefit-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .benefit-icon { font-size: 2.5rem; display: block; margin-bottom: var(--space-md); }
+  .benefit-card h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 700; margin-bottom: var(--space-sm); }
+  .benefit-card p { font-size: 0.9rem; margin-bottom: 0; }
+
+  .roi-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-4xl); align-items: center; }
+  .roi-content h2 { margin-bottom: var(--space-lg); }
+  .roi-content p { font-size: 1.05rem; line-height: 1.8; }
+  .roi-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); margin-top: var(--space-2xl); }
+  .roi-stat { text-align: center; }
+  .roi-stat__number { display: block; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--color-accent); }
+  .roi-stat__label { font-size: 0.8rem; color: var(--color-text-light); }
+  .roi-image img { width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-lg); }
+
+  .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); align-items: start; }
+  .plan-card { background: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-2xl); border: 1px solid var(--color-border); position: relative; transition: all var(--transition-base); }
+  .plan-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .plan-card--featured { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: scale(1.03); }
+  .plan-card--featured:hover { transform: scale(1.03) translateY(-4px); }
+  .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--color-accent); color: #fff; padding: 4px 20px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+  .plan-card h3 { font-family: var(--font-body); font-size: 1.2rem; font-weight: 700; margin-bottom: var(--space-lg); text-align: center; }
+  .plan-investment, .plan-roi { text-align: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border); }
+  .plan-label { display: block; font-size: 0.8rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .plan-amount { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--color-primary); }
+  .plan-roi-value { font-size: 1.5rem; font-weight: 700; color: var(--color-accent); }
+  .plan-features { margin: var(--space-lg) 0; }
+  .plan-features li { padding: 6px 0; padding-left: 20px; position: relative; font-size: 0.9rem; color: var(--color-text-secondary); }
+  .plan-features li::before { content: '✓'; position: absolute; left: 0; color: var(--color-accent); font-weight: 700; }
+
+  .investor-form-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: var(--space-4xl); align-items: start; }
+  .investor-form-info h2 { margin-bottom: var(--space-lg); }
+  .investor-form-info p { font-size: 1.05rem; line-height: 1.8; }
+  .investor-form-wrapper { background: var(--color-surface); padding: var(--space-2xl); border-radius: var(--radius-lg); border: 1px solid var(--color-border); }
+
+  @media (max-width: 960px) {
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .plans-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
+    .plan-card--featured { transform: none; }
+  }
+  @media (max-width: 768px) {
+    .roi-grid, .investor-form-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .roi-stats { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('investor-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('inv-submit');
+    if (btn) {
+      btn.textContent = '¡Solicitud enviada! ✓';
+      btn.style.background = 'var(--color-success)';
+      btn.style.borderColor = 'var(--color-success)';
+      setTimeout(() => {
+        btn.textContent = 'Enviar Solicitud de Inversión';
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        (form as HTMLFormElement).reset();
+      }, 3000);
+    }
+  });
+</script>
